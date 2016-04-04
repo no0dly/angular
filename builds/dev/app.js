@@ -10,6 +10,7 @@
     ])
     .config(configMyApp)
     .run(runMyApp)
+    .controller('AppCtrl', AppCtrl)
     .controller('HomeCtrl', HomeCtrl);
 
     function configMyApp($routeProvider, $locationProvider) {
@@ -29,6 +30,10 @@
     }
 
     function HomeCtrl($scope, $location) {
+
+    }
+
+    function AppCtrl($scope, $location) {
         $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };
@@ -71,20 +76,34 @@
             }, 2);
         }).then(function(value) {
             return new Promise(function(resolve, reject) {
-                VK.api('friends.get', {'fields': 'photo_100'}, function(response) {
+                VK.api('friends.get', {'fields': 'photo_100, city', 'v': '5.50'}, function(response) {
                     if( response.error ) {
                         reject( new Error(response.error.error_msg) );
                     } else {
-                        resolve(response.response);
+                        resolve(response.response.items);
                     }
                 });
             });
         }).then(function(value) {
             $scope.users = value;
+            $scope.changeState = function($event, mode) {
+                var li = document.querySelectorAll('.costumers-list li');
+                for(var i = 0; i < li.length; i++) {
+                    li[i].className = "";
+                }
+                angular.element($event.target.parentNode).addClass('is-active');
+                if ( mode === 'line' ) {
+                    $scope.state = false;
+                } else {
+                    $scope.state = true;
+                }
+                
+            };
             $scope.$apply();
         });
     }
 }());
+
 
 
 (function() {
@@ -111,4 +130,3 @@
         console.log('OrdersCtrl');
     }
 }());
-

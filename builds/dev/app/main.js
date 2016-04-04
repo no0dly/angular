@@ -10,6 +10,7 @@
     ])
     .config(configMyApp)
     .run(runMyApp)
+    .controller('AppCtrl', AppCtrl)
     .controller('HomeCtrl', HomeCtrl);
 
     function configMyApp($routeProvider, $locationProvider) {
@@ -29,6 +30,10 @@
     }
 
     function HomeCtrl($scope, $location) {
+
+    }
+
+    function AppCtrl($scope, $location) {
         $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };

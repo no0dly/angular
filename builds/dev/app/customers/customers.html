@@ -5,15 +5,15 @@
       Customers
     </div>
     <div class="tabs is-toggle columns">
-      <ul class="column is-6">
+      <ul class="costumers-list column is-6">
         <li>
-          <a ng-click="changeMode('list')">
+          <a ng-click="changeState($event, 'line')">
             <i class="fa fa-list"></i>
             List view
           </a>
         </li>
         <li>
-          <a ng-click-active="active">
+          <a ng-click="changeState($event, 'card')">
             <i class="fa fa-th-large"></i>
             Card view
           </a>
@@ -38,8 +38,8 @@
 </div>
 
 <div class="container is-fluid">
-  <div class="customers columns is-multiline">
-    <div class="column is-3" ng-repeat="user in users | filter: query">
+  <div class="customers is-multiline" ng-class="{ 'columns': state }">
+    <div class="column" ng-class="{'is-3': state}" ng-repeat="user in users | filter: query">
       <div class="box">
         <article class="media">
           <div class="media-left">
@@ -52,7 +52,7 @@
               <p>
                 <a href="#">{{user.first_name}} {{user.last_name}}</a>
                 <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {{user.city.title}}
               </p>
             </div>
           </div>
