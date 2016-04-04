@@ -1,0 +1,63 @@
+<div class="container is-fluid">
+  <div class="customers-page">
+    <div class="title">
+      <i class="fa fa-image"></i>
+      Customers
+    </div>
+    <div class="tabs is-toggle columns">
+      <ul class="column is-6">
+        <li>
+          <a ng-click="changeMode('list')">
+            <i class="fa fa-list"></i>
+            List view
+          </a>
+        </li>
+        <li>
+          <a ng-click-active="active">
+            <i class="fa fa-th-large"></i>
+            Card view
+          </a>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-plus"></i>
+            Add
+          </a>
+        </li>
+      </ul>
+      <div class="control is-horizontal column is-6">
+        <div class="control-label">
+          <label for="filter" class="label">filter</label>
+        </div>
+        <div class="control is-grouped">
+          <input id="filter" class="input" type="text" placeholder="Name" ng-model="query">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container is-fluid">
+  <div class="customers columns is-multiline">
+    <div class="column is-3" ng-repeat="user in users | filter: query">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img ng-show="user.photo_100" ng-src={{user.photo_100}} alt="{{user.first_name}} {{user.last_name}}">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <a href="#">{{user.first_name}} {{user.last_name}}</a>
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "name": "ng5",
+  "authors": [
+    "Vadim"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.9",
+    "angular-route": "~1.4.9",
+    "bulma": "^0.0.17"
+  }
+}

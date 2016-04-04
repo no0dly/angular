@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>Angular educational application</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="columns">
+      <div class="column is-12 navigation">
+        <div class="tabs is-right is-boxed">
+          <ul>
+            <li ng-class="{'is-active': isActive('/home')}">
+              <a href="#/home">
+                <i class="fa fa-home"></i>
+                Home
+              </a>
+            </li>
+            <li ng-class="{'is-active': isActive('/customers')}">
+              <a href="#/customers">
+                <i class="fa fa-users"></i>
+                Customers
+              </a>
+            </li>
+            <li ng-class="{'is-active': isActive('/orders')}">
+              <a href="#/orders">
+                <i class="fa fa-cart-plus"></i>
+                Orders
+              </a>
+            </li>
+            <li ng-class="{'is-active': isActive('/login')}">
+              <a href="#/login">
+                <i class="fa fa-sign-in"></i>
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-content" ng-view >
+      
+    </div>
+  </div>
+  <script src="http://vk.com/js/api/openapi.js", type="text/javascript"></script>
+  <script src="libs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

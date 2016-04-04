@@ -1,0 +1,30 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body { 
+  background-color: #FFF;
+}
+.wrap {
+    padding-top: 20px;
+}
+.navigation {
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 30px;
+    i {
+        font-size: 30px;
+    }
+}
+
+.customers-page {
+    margin-bottom: 30px;
+}
