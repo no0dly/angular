@@ -6,7 +6,7 @@
     </div>
     <div class="tabs is-toggle columns">
       <ul class="costumers-list column is-6">
-        <li>
+        <li class="is-active">
           <a ng-click="changeState($event, 'line')">
             <i class="fa fa-list"></i>
             List view
@@ -44,13 +44,13 @@
         <article class="media">
           <div class="media-left">
             <figure class="image is-64x64">
-              <img ng-show="user.photo_100" ng-src={{user.photo_100}} alt="{{user.first_name}} {{user.last_name}}">
+              <img ng-show="user.photo_200" ng-src={{user.photo_200}} alt="{{user.first_name}} {{user.last_name}}">
             </figure>
           </div>
           <div class="media-content">
             <div class="content">
               <p>
-                <a href="#">{{user.first_name}} {{user.last_name}}</a>
+                <a ng-href="#/customers/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
                 <br>
                 {{user.city.title}}
               </p>

@@ -6,7 +6,7 @@
         'ngRoute',
         'myApp.customers',
         'myApp.orders',
-        // 'myApp.person'
+        'myApp.customers.person'
     ])
     .config(configMyApp)
     .run(runMyApp)

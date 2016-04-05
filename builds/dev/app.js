@@ -6,7 +6,7 @@
         'ngRoute',
         'myApp.customers',
         'myApp.orders',
-        // 'myApp.person'
+        'myApp.customers.person'
     ])
     .config(configMyApp)
     .run(runMyApp)
@@ -39,6 +39,9 @@
         };
     }
 })();
+
+var customers;
+
 (function() {
     angular
         .module('myApp.customers', [])
@@ -52,6 +55,10 @@
         .when('/customers', {
             controller: 'CustomersCtrl',
             templateUrl: 'app/customers/customers.html'
+        })
+        .when('/customers/:id', {
+            controller: 'CustomersPersonCtrl',
+            templateUrl: 'app/customers/customers.person.html'
         });
     }
 
@@ -76,7 +83,7 @@
             }, 2);
         }).then(function(value) {
             return new Promise(function(resolve, reject) {
-                VK.api('friends.get', {'fields': 'photo_100, city', 'v': '5.50'}, function(response) {
+                VK.api('friends.get', {'fields': 'photo_200, city', 'v': '5.50'}, function(response) {
                     if( response.error ) {
                         reject( new Error(response.error.error_msg) );
                     } else {
@@ -99,13 +106,28 @@
                 }
                 
             };
+            console.log(value);
+            customers = value;
             $scope.$apply();
         });
     }
 }());
 
+(function() {
+    angular
+    .module('myApp.customers.person', [])
+    .config(configCustomersPerson)
+    .controller('CustomersPersonCtrl', CustomersPersonCtrl);
 
+    function configCustomersPerson() {
+        
+    }
 
+    function CustomersPersonCtrl( $scope, $filter, $routeParams ) {
+        var person = $filter('filter')(customers, {'id': $routeParams.id});
+        $scope.person = person[0];
+    }
+}());
 (function() {
     angular
         .module('myApp.orders', [])
